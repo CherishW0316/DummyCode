@@ -2,8 +2,8 @@
 //  ViewController.m
 //  DummyCode
 //
-//  Created by 4399 on 2017/12/22.
-//  Copyright © 2017年 4399. All rights reserved.
+//  Created by c.W on 2017/12/22.
+//  Copyright © 2017年 c.W. All rights reserved.
 //
 
 #import "ViewController.h"
@@ -51,7 +51,7 @@ static NSMutableArray *classFirstNameArray;
     
     @autoreleasepool {
         
-        self.basePath = @"/Users/a4399/Documents/xcode/Cherish";
+        self.basePath = @"/Users/c.W/Documents/xcode/Cherish";
         
         
         // 原项目路径（与.xcodeproj文件同一层级）
@@ -74,7 +74,7 @@ static NSMutableArray *classFirstNameArray;
         self.outDirString = [self.basePath stringByAppendingString:@"/out"];
         self.gOutParameterName = @"AppLog";
         classFirstNameArray = [[NSMutableArray alloc] init];
-        self.classSecondNameArray = @[@"43991",@"43992"];
+        self.classSecondNameArray = @[@"12",@"13"];
         self.classNameSet = [NSMutableSet new];
         //英文字母
         self.letters = @[@"a",@"b",@"c",@"d",@"e",@"f",@"g",@"h",@"i",@"j",@"k",@"l",@"m",@"n",@"o",@"p",@"q",@"r",@"s",@"t",@"u",@"v",@"w",@"x",@"y",@"z"];
