@@ -51,7 +51,7 @@ static NSMutableArray *classFirstNameArray;
     
     @autoreleasepool {
         
-        self.basePath = @"/Users/c.W/Documents/xcode/Cherish";
+        self.basePath = @"/Users/a4399/Documents/xcode/Cherish";
         
         
         // 原项目路径（与.xcodeproj文件同一层级）
@@ -398,11 +398,11 @@ static NSString *const kMClassFileTemplate = @"\
                 break;
         }
         
-        NSString *fileName = [NSString stringWithFormat:@"%@+%@.h", className, newCategoryName];
+        NSString *fileName = [NSString stringWithFormat:@"%@%@.h", className, newCategoryName];
         NSString *fileContent = [NSString stringWithFormat:kHClassFileTemplate, importString, className, newCategoryName, hFileMethodsString];
         [fileContent writeToFile:[outDirectory stringByAppendingPathComponent:fileName] atomically:YES encoding:NSUTF8StringEncoding error:nil];
         
-        fileName = [NSString stringWithFormat:@"%@+%@.m", className, newCategoryName];
+        fileName = [NSString stringWithFormat:@"%@%@.m", className, newCategoryName];
         fileContent = [NSString stringWithFormat:kMClassFileTemplate, className, newCategoryName, className, newCategoryName, mFileMethodsString];
         [fileContent writeToFile:[outDirectory stringByAppendingPathComponent:fileName] atomically:YES encoding:NSUTF8StringEncoding error:nil];
     }];
