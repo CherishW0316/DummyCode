@@ -4,16 +4,16 @@
 //
 //
 
-#import "MoerFinanceImportClass.h"
+#import "ImportClass.h"
 
 {% for p in ClassName %}
 #import "{{ p.key }}.h"{% /for %}
 
-@interface MoerFinanceImportClass ()
+@interface ImportClass ()
 
 @end
 
-@implementation MoerFinanceImportClass
+@implementation ImportClass
 
 - (instancetype)init {
     self = [super init];

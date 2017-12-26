@@ -74,7 +74,7 @@ static NSMutableArray *classFirstNameArray;
         self.outDirString = [self.basePath stringByAppendingString:@"/out"];
         self.gOutParameterName = @"AppLog";
         classFirstNameArray = [[NSMutableArray alloc] init];
-        self.classSecondNameArray = @[@"a",@"b",@"c",@"d"];
+        self.classSecondNameArray = @[@"c",@"d"];
         self.classNameSet = [NSMutableSet new];
         //英文字母
         self.letters = @[@"a",@"b",@"c",@"d",@"e",@"f",@"g",@"h",@"i",@"j",@"k",@"l",@"m",@"n",@"o",@"p",@"q",@"r",@"s",@"t",@"u",@"v",@"w",@"x",@"y",@"z"];
