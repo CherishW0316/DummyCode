@@ -267,8 +267,11 @@ void recursiveDirectory(NSString *directory, NSArray<NSString *> *ignoreDirNames
     NSArray<NSString *> *files = [fm contentsOfDirectoryAtPath:directory error:nil];
     BOOL isDirectory;
     for (NSString *filePath in files) {
+    
         
-        if ([filePath rangeOfString:@"+"].location == NSNotFound){
+        if ([filePath rangeOfString:@"+"].location == NSNotFound
+            && [[NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"[A-Za-z]+$"] evaluateWithObject:[filePath substringToIndex:1]]
+            ){
             NSString *path = [directory stringByAppendingPathComponent:filePath];
             if ([fm fileExistsAtPath:path isDirectory:&isDirectory] && isDirectory) {
                 if (![ignoreDirNames containsObject:filePath]) {
