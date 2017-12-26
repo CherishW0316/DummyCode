@@ -51,7 +51,7 @@ static NSMutableArray *classFirstNameArray;
     
     @autoreleasepool {
         
-        self.basePath = @"/Users/a4399/Documents/xcode/Cherish";
+        self.basePath = @"/Users/a4399/Desktop/tmld";
         
         
         // 原项目路径（与.xcodeproj文件同一层级）
@@ -267,27 +267,30 @@ void recursiveDirectory(NSString *directory, NSArray<NSString *> *ignoreDirNames
     NSArray<NSString *> *files = [fm contentsOfDirectoryAtPath:directory error:nil];
     BOOL isDirectory;
     for (NSString *filePath in files) {
-        NSString *path = [directory stringByAppendingPathComponent:filePath];
-        if ([fm fileExistsAtPath:path isDirectory:&isDirectory] && isDirectory) {
-            if (![ignoreDirNames containsObject:filePath]) {
-                recursiveDirectory(path, nil, handleMFile, handleSwiftFile);
+        
+        if ([filePath rangeOfString:@"+"].location == NSNotFound){
+            NSString *path = [directory stringByAppendingPathComponent:filePath];
+            if ([fm fileExistsAtPath:path isDirectory:&isDirectory] && isDirectory) {
+                if (![ignoreDirNames containsObject:filePath]) {
+                    recursiveDirectory(path, nil, handleMFile, handleSwiftFile);
+                }
+                continue;
             }
-            continue;
-        }
-        NSString *fileName = filePath.lastPathComponent;
-        if ([fileName hasSuffix:@".h"]) {
-            fileName = [fileName stringByDeletingPathExtension];
-            
-            NSString *mFileName = [fileName stringByAppendingPathExtension:@"m"];
-            if ([files containsObject:mFileName]) {
-                handleMFile([directory stringByAppendingPathComponent:mFileName]);
+            NSString *fileName = filePath.lastPathComponent;
+            if ([fileName hasSuffix:@".h"]) {
+                fileName = [fileName stringByDeletingPathExtension];
+                
+                NSString *mFileName = [fileName stringByAppendingPathExtension:@"m"];
+                if ([files containsObject:mFileName]) {
+                    handleMFile([directory stringByAppendingPathComponent:mFileName]);
+                }
+                
+                [classFirstNameArray addObject:fileName];
+                
+                
+            } else if ([fileName hasSuffix:@".swift"]) {
+                handleSwiftFile([directory stringByAppendingPathComponent:fileName]);
             }
-            
-            [classFirstNameArray addObject:fileName];
-            
-            
-        } else if ([fileName hasSuffix:@".swift"]) {
-            handleSwiftFile([directory stringByAppendingPathComponent:fileName]);
         }
     }
 }
